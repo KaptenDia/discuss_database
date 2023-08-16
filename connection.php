@@ -1,6 +1,6 @@
 <?php
 
-$server = 'localost';
+$server = 'localhost';
 $user = 'root';
 $password = '';
 $db ='discuss_app';
