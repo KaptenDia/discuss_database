@@ -6,7 +6,7 @@ $password = md5($_POST['password']);
 
 $sql = "SELECT * FROM user
         WHERE
-        username = 'username' AND password = '$password'
+        username = '$username' AND password = '$password'
         ";
 $result = $connect->query($sql);
 

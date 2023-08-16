@@ -9,7 +9,7 @@ $new_base64code = $_POST['new_base64code'];
 
 $sql = "UPDATE user 
         SET 
-        image ='new_image'
+        image ='$new_image'
         WHERE
         id = '$id'
         ";    
