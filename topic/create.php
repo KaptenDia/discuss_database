@@ -12,7 +12,7 @@ $sql ="INSERT INTO topic
         title = '$title',
         description = '$description',
         images = '$images',
-        id_user = '$id_user',
+        id_user = '$id_user'
         ";
 $result = $connect->query($sql);
 
@@ -20,7 +20,8 @@ if ($result) {
     $list_image = json_decode($images);
     $list_base64code = json_decode($base64codes);
     for ($i = 0; $i < count($list_image); $i++) { 
-        file_put_contents("../images/topic/".$list_image[$i], base64_decode($list_base64code));
+        $base64code = $list_base64code[$i];
+        file_put_contents("../images/topic/".$list_image[$i], base64_decode($base64code));
     }
     echo json_encode(array("success" => true));
 } else {
