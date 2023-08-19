@@ -5,7 +5,7 @@ $id = $_POST['id'];
 $title = $_POST['title'];
 $description = $_POST['description'];
 
-$sql ="UPDATE INTO topic
+$sql ="UPDATE topic
         SET
         title = '$title',
         description = '$description'
