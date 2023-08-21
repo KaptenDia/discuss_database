@@ -1,11 +1,11 @@
 <?php
 include '../connection.php';
 
-
 $id_user = $_POST['id_user'];
+
 $sql = "SELECT * FROM topic
         WHERE
-        id_user IN(
+        id_user IN (
             SELECT to_id_user FROM follow
             WHERE
             from_id_user = '$id_user'
@@ -13,10 +13,10 @@ $sql = "SELECT * FROM topic
         ";
 $result = $connect->query($sql);
 
-if ($result->num_rows > 0) {
+if($result->num_rows > 0) {    
     $data = array();
-    while ($get_row = $result->fetch_assoc()) {
-        
+    while($get_row = $result->fetch_assoc()) {
+
         $id_user = $get_row["id_user"];
         $sql_user = "SELECT * FROM user
                     WHERE
@@ -24,7 +24,7 @@ if ($result->num_rows > 0) {
                     ";
         $result_user = $connect->query($sql_user);
         $user = array();
-        while ($row_user = $result_user -> fetch_assoc()) {
+        while($row_user = $result_user->fetch_assoc()) {            
             $user[] = $row_user;
         }
 
@@ -32,12 +32,12 @@ if ($result->num_rows > 0) {
         $data[] = $get_row;
     }
     echo json_encode(array(
-        "success" => true,
-        "data" => $data,
+        "success"=>true,
+        "data"=> $data,
     ));
 } else {
     echo json_encode(array(
-        "success" => false,
-        "data" => $data,
+        "success"=>false,
+        "data"=>[],
     ));
 }
